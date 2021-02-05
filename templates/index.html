@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Prediction App</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Loan Status Prediction</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+
+    	<input type="text" name="Gender" placeholder="Gender(M/F)" required="required" />
+        <input type="text" name="Married" placeholder="Married(Y/N)" required="required" />
+		<input type="text" name="Dependents" placeholder="Dependents(Y/N)" required="required" />
+        <input type="text" name="Education" placeholder="Graduate Education(Y/N)" required="required" />
+        <input type="text" name="Self_Employed" placeholder="Self Employed(Y/N)" required="required" />
+		<input type="text" name="ApplicantIncome" placeholder="Applicant Income in Lakhs" required="required" />
+		<input type="text" name="CoapplicantIncome" placeholder="Coapplicant Income in Lakhs" required="required" />
+		<input type="text" name="LoanAmount" placeholder="Loan Amount in Lakhs" required="required" />
+		<input type="text" name="Loan_Amount_Term" placeholder="Loan Term in Months" required="required" />
+		<input type="text" name="Credit_History" placeholder="Credit History(Y/N)" required="required" />
+		<input type="text" name="Property_Area" placeholder="Property Area(U-Urban,R-Rural,SU-Semiurban)" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
